@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f0f2f5;
+    color: #222;
+  }
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 2rem;
+  }
+  .hero {
+    background-image: url('https://www.taskrabbit.com/v3/assets/hero_landing-fdeb7ef8f1a4361ec76f75d007d79546.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+  }
+  .overlay {
+    background: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: 300px;
+  }
+  .hero-form select {
+    padding: 0.6rem;
+    border-radius: 5px;
+    border: none;
+  }
+  .price-info {
+    font-size: 1.4rem;
+  }
+  .price-info span {
+    font-size: 1rem;
+    color: #ccc;
+  }
+  .hero-form button, .btn-primary {
+    background: #00cc88;
+    color: white;
+    padding: 0.7rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .hero-form button:hover, .btn-primary:hover {
+    background: #00aa70;
+  }
+  .signin {
+    margin-top: 1rem;
+  }
+  .signin a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  
+  .features, .steps, .about {
+    padding: 4rem 2rem;
+  }
+  .features h2, .about h2, .steps h2, .cta h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .alt-bg {
+    background: #e8f0ff;
+  }
+  .dark-bg {
+    background: #1e2b38;
+    color: white;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  .card, .step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .card h3 {
+    color: #0077cc;
+  }
+  .step {
+    font-weight: bold;
+    text-align: center;
+    background: #fff;
+  }
+  
+  .cta {
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+  .cta button {
+    background: #00cc88;
+    color: white;
+    padding: 0.8rem 2rem;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+  }
+  
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+  }
+  
+  .account-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .account-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .account-header p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+  
+  .account-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #00cc88;
+    box-shadow: 0 0 0 2px rgba(0, 204, 136, 0.2);
+  }
+  
+  .checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-group input {
+    margin-right: 10px;
+    margin-top: 3px;
+  }
+  
+  .checkbox-group label {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
+  }
+  
+  .terms-text {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  
+  .terms-text a {
+    color: #00cc88;
+    text-decoration: none;
+  }
+  
+  .terms-text a:hover {
+    text-decoration: underline;
+  }
+  
+  .create-account-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #00cc88;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .create-account-btn:hover {
+    background-color: #00aa70;
+  } 

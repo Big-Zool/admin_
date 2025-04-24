@@ -1,11 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Become a Provider | MisyonPazarı</title>
+  <link rel="stylesheet" href="tasker-.css" />
 </head>
 <body>
-    
+  <header class="hero">
+    <div class="overlay">
+      <div class="container">
+        <h1>Earn money your way</h1>
+        <p>Join MisyonPazarı and offer your services locally</p>
+        <form class="hero-form">
+          <select>
+            <option>Select your area</option>
+            <optgroup label="Northern Cyprus Cities">
+              <option>Nicosia (Lefkoşa)</option>
+              <option>Kyrenia (Girne)</option>
+              <option>Famagusta (Gazimağusa)</option>
+              <option>Morphou (Güzelyurt)</option>
+              <option>Iskele (Trikomo)</option>
+            </optgroup>
+          </select>
+          <select>
+            <option>Choose a Category</option>
+            <option>Plumbing</option>
+            <option>Electrical</option>
+            <option>Appliance Repair</option>
+          </select>
+          <div class="price-info">$40<span> per hour</span></div>
+          <button type="button" onclick="openModal()" class="btn-primary">Get started</button>
+        </form>
+        <p class="signin">Already have an account? <a href="#">Sign in</a></p>
+      </div>
+    </div>
+  </header>
+
+  <section class="features alt-bg">
+    <div class="container">
+      <h2>Why Join MisyonPazarı?</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Be your own boss</h3>
+          <p>Work when and where you want with full control over your schedule.</p>
+        </div>
+        <div class="card">
+          <h3>Keep 100% of your pay</h3>
+          <p>You set your rates and keep all your earnings and tips — no hidden fees.</p>
+        </div>
+        <div class="card">
+          <h3>Clients come to you</h3>
+          <p>Get discovered by clients in your area and grow your business fast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about dark-bg">
+    <div class="container">
+      <h2>What is MisyonPazarı?</h2>
+      <p>MisyonPazarı is a trusted platform that connects skilled professionals with local customers. Whether it's electrical repairs or appliance servicing — we help you get hired quickly and safely.</p>
+    </div>
+  </section>
+
+  <section class="steps alt-bg">
+    <div class="container">
+      <h2>Getting Started is Easy</h2>
+      <div class="grid">
+        <div class="step">1. Sign up</div>
+        <div class="step">2. Build your profile</div>
+        <div class="step">3. Verify your ID</div>
+        <div class="step">4. Pay registration fee</div>
+        <div class="step">5. Set availability</div>
+        <div class="step">6. Start working</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta dark-bg">
+    <div class="container">
+      <h2>Ready to work on your terms?</h2>
+      <button onclick="openModal()" class="btn-primary">Get started</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 MisyonPazarı. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="account-header">
+        <h3>Create your account</h3>
+        <p>Create an account to get started</p>
+      </div>
+      
+      <form class="account-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Create a password</label>
+          <input type="password" id="password" required>
+        </div>
+        
+        <div class="checkbox-group">
+          <input type="checkbox" id="sole-proprietor" required>
+          <label for="sole-proprietor">I acknowledge I am a sole proprietor.</label>
+        </div>
+        
+        <p class="terms-text">
+          By clicking below and creating an account, I agree to
+          <a href="#">MisyonPazarı's Terms of Service</a> and <a href="#">Privacy Policy</a>
+        </p>
+        
+        <button type="submit" class="create-account-btn">Create account</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="tasker_.js"></script>
 </body>
 </html>
