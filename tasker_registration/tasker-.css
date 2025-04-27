@@ -1,263 +1,423 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background-color: #f0f2f5;
-    color: #222;
-  }
-  .container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 2rem;
-  }
-  .hero {
-    background-image: url('https://www.taskrabbit.com/v3/assets/hero_landing-fdeb7ef8f1a4361ec76f75d007d79546.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    color: white;
-  }
-  .overlay {
-    background: rgba(0, 0, 0, 0.6);
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-  .hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
-  }
-  .hero p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-  }
-  .hero-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    max-width: 300px;
-  }
-  .hero-form select {
-    padding: 0.6rem;
-    border-radius: 5px;
-    border: none;
-  }
-  .price-info {
-    font-size: 1.4rem;
-  }
-  .price-info span {
-    font-size: 1rem;
-    color: #ccc;
-  }
-  .hero-form button, .btn-primary {
-    background: #00cc88;
-    color: white;
-    padding: 0.7rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  .hero-form button:hover, .btn-primary:hover {
-    background: #00aa70;
-  }
-  .signin {
-    margin-top: 1rem;
-  }
-  .signin a {
-    color: #fff;
-    text-decoration: underline;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: #f0f2f5;
+  color: #222;
+}
+
+.hero {
+  background-image: url('https://www.taskrabbit.com/v3/assets/hero_landing-fdeb7ef8f1a4361ec76f75d007d79546.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: white;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.hero-form select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  appearance: none;
+  /* Removes default arrow in some browsers */
+  -webkit-appearance: none;
+  /* Removes default arrow in Safari */
+  -moz-appearance: none;
+  /* Removes default arrow in Firefox */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.price-info {
+  font-size: 1.4rem;
+}
+
+.price-info span {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.hero-form button,
+.btn-primary {
+  background: #00cc88;
+  color: white;
+  padding: 0.7rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.hero-form button:hover,
+.btn-primary:hover {
+  background: #006d49;
+  border-color: #888;
+}
+
+.hero-form select:hover {
+  border-color: #888;
+}
+
+.hero-form select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.hero-form optgroup {
+  font-weight: bold;
+  color: #555;
+}
+
+/* Style the options */
+.hero-form option {
+  padding: 8px;
+  font-size: 15px;
+}
+
+/* Style the price info */
+.price-info {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.price-info span {
+  font-weight: normal;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+/* Style the button (if needed) */
+.btn-primary {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #006d49;
+}
+
+.signin {
+  margin-top: 1rem;
+}
+
+.signin a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.signin a:hover {
+  color: #ccc;
+}
+
+.features,
+.steps,
+.about {
+  padding: 4rem 2rem;
+  /* box-shadow: 07px 5px 2px rgba(0,0,0,0.1); */
+}
+
+.features h2,
+.about h2,
+.steps h2,
+.cta h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-style: groove;
+  border-bottom: none;
   
-  .features, .steps, .about {
-    padding: 4rem 2rem;
-  }
-  .features h2, .about h2, .steps h2, .cta h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  .alt-bg {
-    background: #e8f0ff;
-  }
-  .dark-bg {
-    background: #1e2b38;
-    color: white;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-  .card, .step {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-  .card h3 {
-    color: #0077cc;
-  }
-  .step {
-    font-weight: bold;
-    text-align: center;
-    background: #fff;
-  }
-  
-  .cta {
-    text-align: center;
-    padding: 3rem 2rem;
-  }
-  .cta button {
-    background: #00cc88;
-    color: white;
-    padding: 0.8rem 2rem;
-    font-weight: bold;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .footer {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-  }
-  
-  /* Modal Styles */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 32px;
-    width: 100%;
-    max-width: 400px;
-    position: relative;
-  }
-  
-  .close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #666;
-    cursor: pointer;
-  }
-  
-  .account-header {
-    text-align: center;
-    margin-bottom: 24px;
-  }
-  
-  .account-header h3 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 8px;
-  }
-  
-  .account-header p {
-    font-size: 14px;
-    color: #666;
-    margin: 0;
-  }
-  
-  .account-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 8px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
-  }
-  
-  .form-group input:focus {
-    outline: none;
-    border-color: #00cc88;
-    box-shadow: 0 0 0 2px rgba(0, 204, 136, 0.2);
-  }
-  
-  .checkbox-group {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
-  }
-  
-  .checkbox-group input {
-    margin-right: 10px;
-    margin-top: 3px;
-  }
-  
-  .checkbox-group label {
-    font-size: 14px;
-    color: #333;
-    line-height: 1.4;
-  }
-  
-  .terms-text {
-    font-size: 12px;
-    color: #666;
-    margin-bottom: 24px;
-    line-height: 1.5;
-  }
-  
-  .terms-text a {
-    color: #00cc88;
-    text-decoration: none;
-  }
-  
-  .terms-text a:hover {
-    text-decoration: underline;
-  }
-  
-  .create-account-btn {
-    width: 100%;
-    padding: 14px;
-    background-color: #00cc88;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .create-account-btn:hover {
-    background-color: #00aa70;
-  } 
+}
+
+.alt-bg {
+  background: #e8f0ff;
+}
+
+.dark-bg {
+  background: #1e2b38;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  /* box-shadow: 0 2px 6px rgba(0,0,0,0.1); */
+}
+
+.card,
+.step {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 7px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  color: #0077cc;
+}
+
+.step {
+  font-weight: bold;
+  text-align: center;
+  background: #fff;
+}
+
+#get-started {
+  border: none;
+}
+
+
+.cta {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.cta button {
+  background: #00cc88;
+  color: white;
+  padding: 0.8rem 2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+}
+
+.account-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.account-header h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.account-header p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #00cc88;
+  box-shadow: 0 0 0 2px rgba(0, 204, 136, 0.2);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.checkbox-group input {
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.checkbox-group label {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.terms-text {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.terms-text a {
+  color: #00cc88;
+  text-decoration: none;
+}
+
+.terms-text a:hover {
+  text-decoration: underline;
+}
+
+.create-account-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #00cc88;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.create-account-btn:hover {
+  background-color: #00aa70;
+}
+
+/* Add these changes to your existing CSS */
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+  background-color: transparent;
+  /* Ensure container is transparent */
+}
+
+.hero-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Semi-transparent white */
+  backdrop-filter: blur(5px);
+  /* Optional: Adds blur effect behind the form */
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* Light border for definition */
+}
+
+/* Update select styles to be transparent */
+.hero-form select {
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  /* White text for better contrast */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Change option colors for better visibility */
+.hero-form option {
+  background-color: #333;
+  /* Dark background for options */
+  color: white;
+}
+
+/* Update button style */
+.btn-primary {
+  background-color: rgba(0, 204, 136, 0.8);
+  /* Semi-transparent green */
+  color: white;
+  border: none;
+}
+
+/* Keep all white text consistent */
+.hero h1,
+.hero p,
+.signin,
+.price-info {
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  /* Optional: improves readability */
+}
