@@ -830,3 +830,112 @@ body {
   color: white;
   border-color: var(--danger);
 }
+.calendar-view {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.calendar-view .day {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.calendar-view .day.selected {
+  background-color: #00cc88;
+  color: white;
+}
+
+.task-management {
+  margin-top: 20px;
+}
+
+.task-management ul {
+  list-style: none;
+  padding: 0;
+}
+
+.task-management li {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-management li .delete-task {
+  color: red;
+  cursor: pointer;
+}
+/* Task Management Section Styling */
+.task-management {
+  background-color: #f9f9f9; /* Light background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.task-management h3 {
+  font-size: 1.5rem; /* Larger font size for the title */
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.task-management ul {
+  list-style: none;
+  padding: 0;
+}
+
+.task-management li {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+.task-management li .delete-task {
+  color: red;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.task-management form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.task-management form input[type="text"] {
+  padding: 10px;
+  font-size: 1.2rem; /* Bigger input text */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.task-management form button {
+  padding: 10px 15px;
+  font-size: 1.2rem; /* Bigger button text */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.task-management form button:hover {
+  background-color: #00cc88;
+}

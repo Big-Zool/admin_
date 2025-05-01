@@ -406,4 +406,82 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize when schedule section is shown
   document.querySelector('.sidebar-nav a[data-section="schedule"]').addEventListener('click', initCalendar);
+  
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const calendar = document.getElementById('calendar');
+  const taskList = document.getElementById('task-list');
+  const addTaskForm = document.getElementById('add-task-form');
+  const taskTitleInput = document.getElementById('task-title');
+  const selectedDayElement = document.getElementById('selected-day');
+
+  let tasks = {}; // Store tasks by date
+  let selectedDay = null;
+
+  // Generate calendar days
+  function generateCalendar() {
+    calendar.innerHTML = '';
+    for (let i = 1; i <= 30; i++) {
+      const day = document.createElement('div');
+      day.className = 'day';
+      day.textContent = i;
+      day.addEventListener('click', () => selectDay(i));
+      calendar.appendChild(day);
+    }
+  }
+
+  // Select a day
+  function selectDay(day) {
+    selectedDay = `2025-05-${String(day).padStart(2, '0')}`;
+    selectedDayElement.textContent = `May ${day}, 2025`;
+
+    document.querySelectorAll('.day').forEach((d) => d.classList.remove('selected'));
+    document.querySelector(`.day:nth-child(${day})`).classList.add('selected');
+
+    loadTasks();
+  }
+
+  // Load tasks for the selected day
+  function loadTasks() {
+    taskList.innerHTML = '';
+    if (tasks[selectedDay] && tasks[selectedDay].length > 0) {
+      tasks[selectedDay].forEach((task, index) => {
+        const taskItem = document.createElement('li');
+        taskItem.textContent = task;
+        const deleteButton = document.createElement('span');
+        deleteButton.textContent = '✖';
+        deleteButton.className = 'delete-task';
+        deleteButton.addEventListener('click', () => deleteTask(index));
+        taskItem.appendChild(deleteButton);
+        taskList.appendChild(taskItem);
+      });
+    } else {
+      taskList.innerHTML = '<li>No tasks for this day</li>';
+    }
+  }
+
+  // Add a new task
+  addTaskForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!selectedDay) {
+      alert('Please select a day first!');
+      return;
+    }
+
+    const taskTitle = taskTitleInput.value;
+    if (!tasks[selectedDay]) {
+      tasks[selectedDay] = [];
+    }
+    tasks[selectedDay].push(taskTitle);
+    taskTitleInput.value = '';
+    loadTasks();
+  });
+
+  // Delete a task
+  function deleteTask(index) {
+    tasks[selectedDay].splice(index, 1);
+    loadTasks();
+  }
+
+  generateCalendar();
 });
