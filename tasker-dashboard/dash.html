@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Dashboard | MisyonPazarı</title>
+  <link rel="stylesheet" href="dash-.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="https://via.placeholder.com/150x50?text=MisyonPazarı" alt="MisyonPazarı Logo">
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="active">
+            <a href="#" data-section="dashboard">
+              <i class="fas fa-home"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="schedule">
+              <i class="fas fa-calendar-alt"></i>
+              <span>Schedule</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="jobs">
+              <i class="fas fa-tasks"></i>
+              <span>Jobs</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="earnings">
+              <i class="fas fa-wallet"></i>
+              <span>Earnings</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="analytics">
+              <i class="fas fa-chart-line"></i>
+              <span>Analytics</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="settings">
+              <i class="fas fa-cog"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="help-center">
+          <i class="fas fa-question-circle"></i>
+          <span>Help Center</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search...">
+        </div>
+        <div class="header-actions">
+          <div class="notification">
+            <i class="fas fa-bell"></i>
+            <span class="badge">3</span>
+          </div>
+          <div class="profile">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture">
+            <span>John Doe</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <section id="dashboard" class="content-section active">
+        <div class="content-wrapper">
+          <h1>Dashboard Overview</h1>
+          
+          <!-- Stats Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-wallet"></i>
+              </div>
+              <div class="stat-info">
+                <h3>Total Earnings</h3>
+                <p class="stat-value">₺4,250</p>
+                <p class="stat-change positive">+12% from last month</p>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+              <div class="stat-info">
+                <h3>Completed Jobs</h3>
+                <p class="stat-value">24</p>
+                <p class="stat-change positive">+8% from last month</p>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-info">
+                <h3>Rating</h3>
+                <p class="stat-value">4.8</p>
+                <p class="stat-change neutral">Same as last month</p>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-info">
+                <h3>Upcoming Jobs</h3>
+                <p class="stat-value">5</p>
+                <p class="stat-change negative">-2 from last week</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upcoming Jobs Section -->
+          <section class="section upcoming-jobs">
+            <div class="section-header">
+              <h2>Upcoming Jobs</h2>
+              <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="jobs-list">
+              <div class="job-card">
+                <div class="job-info">
+                  <h3>Plumbing Repair</h3>
+                  <p class="job-client">Client: Ahmet Yılmaz</p>
+                  <p class="job-date"><i class="fas fa-calendar-alt"></i> Tomorrow, 10:00 AM</p>
+                  <p class="job-location"><i class="fas fa-map-marker-alt"></i> Nicosia, Cyprus</p>
+                </div>
+                <div class="job-actions">
+                  <button class="btn btn-primary">View Details</button>
+                  <button class="btn btn-outline">Reschedule</button>
+                </div>
+              </div>
+              
+              <div class="job-card">
+                <div class="job-info">
+                  <h3>Electrical Installation</h3>
+                  <p class="job-client">Client: Maria Papadopoulos</p>
+                  <p class="job-date"><i class="fas fa-calendar-alt"></i> Friday, 2:00 PM</p>
+                  <p class="job-location"><i class="fas fa-map-marker-alt"></i> Kyrenia, Cyprus</p>
+                </div>
+                <div class="job-actions">
+                  <button class="btn btn-primary">View Details</button>
+                  <button class="btn btn-outline">Reschedule</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Recent Earnings Section -->
+          <section class="section recent-earnings">
+            <div class="section-header">
+              <h2>Recent Earnings</h2>
+              <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="earnings-chart">
+              <canvas id="earningsChart"></canvas>
+            </div>
+            <div class="earnings-list">
+              <div class="earning-item">
+                <div class="earning-info">
+                  <h3>Plumbing Repair</h3>
+                  <p class="earning-date">June 15, 2025</p>
+                </div>
+                <div class="earning-amount">
+                  ₺350
+                </div>
+              </div>
+              
+              <div class="earning-item">
+                <div class="earning-info">
+                  <h3>Electrical Installation</h3>
+                  <p class="earning-date">June 14, 2025</p>
+                </div>
+                <div class="earning-amount">
+                  ₺450
+                </div>
+              </div>
+              
+              <div class="earning-item">
+                <div class="earning-info">
+                  <h3>Appliance Repair</h3>
+                  <p class="earning-date">June 12, 2025</p>
+                </div>
+                <div class="earning-amount">
+                  ₺275
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- Schedule Section -->
+      <section id="schedule" class="content-section">
+        <div class="content-wrapper">
+          <div class="schedule-header">
+            <h2>My Schedule</h2>
+            <div class="view-options">
+              <button class="btn btn-outline active" data-view="day">Day</button>
+              <button class="btn btn-outline" data-view="week">Week</button>
+              <button class="btn btn-outline" data-view="month">Month</button>
+            </div>
+          </div>
+
+          <div class="calendar-container">
+            <div class="calendar-header">
+              <button id="prev-period" class="btn btn-icon"><i class="fas fa-chevron-left"></i></button>
+              <h3 id="current-period">June 2023</h3>
+              <button id="next-period" class="btn btn-icon"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div id="calendar" class="calendar-view">
+              <!-- Calendar will be generated by JavaScript -->
+            </div>
+          </div>
+
+          <div class="availability-settings">
+            <h3>Working Hours</h3>
+            <div class="working-hours-grid">
+              <!-- Generated by JavaScript -->
+            </div>
+            
+            <div class="unavailable-days">
+              <h3>Mark Unavailable Days</h3>
+              <div class="day-selector">
+                <!-- Generated by JavaScript -->
+              </div>
+            </div>
+            
+            <button id="save-availability" class="btn btn-primary">Save Changes</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Jobs Section -->
+      <section id="jobs" class="content-section">
+        <div class="content-wrapper">
+          <h1>Jobs Management</h1>
+          <!-- Jobs content would go here -->
+        </div>
+      </section>
+
+      <!-- Earnings Section -->
+      <section id="earnings" class="content-section">
+        <div class="content-wrapper">
+          <h1>Earnings Reports</h1>
+          <!-- Earnings content would go here -->
+        </div>
+      </section>
+
+      <!-- Analytics Section -->
+      <section id="analytics" class="content-section">
+        <div class="content-wrapper">
+          <h1>Performance Analytics</h1>
+          <!-- Analytics content would go here -->
+        </div>
+      </section>
+
+      <!-- Settings Section -->
+      <section id="settings" class="content-section">
+        <div class="content-wrapper">
+          <h1>Account Settings</h1>
+          <!-- Settings content would go here -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="dash_.js"></script>
+</body>
+</html>
