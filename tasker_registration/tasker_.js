@@ -28,6 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         });
     }
+    // Add this INSIDE the DOMContentLoaded event listener
+// Right after the existing form submission code
+document.addEventListener('DOMContentLoaded', () => {
+    // Existing code...
+  
+    // Add this after the accountForm event listener
+    const countryCodeSelect = document.querySelector('.country-code');
+    if (countryCodeSelect) {
+      countryCodeSelect.addEventListener('change', function() {
+        console.log('Selected country code:', this.value);
+      });
+    }
+  
+    // Rest of existing code...
+  });
 
     // Earnings Calculator
     const skillSelect = document.getElementById('skill-select');

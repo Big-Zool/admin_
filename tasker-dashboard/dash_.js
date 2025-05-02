@@ -484,4 +484,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   generateCalendar();
+  document.querySelectorAll('.sidebar-nav a').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sectionId = link.getAttribute('data-section');
+    document.querySelectorAll('.content-section').forEach((section) => {
+      section.classList.remove('active');
+    });
+    document.getElementById(sectionId).classList.add('active');
+  });
 });
+});
+

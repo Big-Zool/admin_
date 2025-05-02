@@ -421,3 +421,46 @@ body {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   /* Optional: improves readability */
 }
+/* Add these at the BOTTOM of your CSS file */
+/* ===== Country & Phone Styles ===== */
+.country-code {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  background: white;
+  margin-right: -1px;
+  width: 120px;
+}
+
+.phone-input {
+  display: flex;
+}
+
+.phone-input input[type="tel"] {
+  flex: 1;
+  border-radius: 0 4px 4px 0;
+}
+
+.name-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* Add under existing .account-header styles */
+.account-header p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.country-code option {
+  background: white;
+  color: #333;
+  padding: 8px;
+}
+
+.country-code option::before {
+  content: attr(data-flag);
+  margin-right: 8px;
+}
