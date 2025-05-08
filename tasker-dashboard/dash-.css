@@ -939,3 +939,26 @@ body {
 .task-management form button:hover {
   background-color: #00cc88;
 }
+#schedule .calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.calendar-view {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* Ensure 7 columns for days of the week */
+  gap: 10px;
+}
+
+.calendar-view .day {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.calendar-view .day.selected {
+  background-color: #007bff;
+  color: white;
+}

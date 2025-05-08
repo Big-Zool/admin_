@@ -1,4 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+  
+
+
+
+  document.querySelectorAll('.sidebar-nav a').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+  
+      const sectionId = link.getAttribute('data-section');
+  
+      // Show the matching section
+      document.querySelectorAll('.content-section').forEach((section) => {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId)?.classList.add('active');
+  
+      // Update sidebar highlighting
+      document.querySelectorAll('.sidebar-nav li').forEach((item) => {
+        item.classList.remove('active');
+      });
+      link.parentElement.classList.add('active');
+  
+      // Re-initialize calendar if "Schedule" is clicked
+      if (sectionId === 'schedule') {
+        initCalendar(); // This should be defined elsewhere in your JS
+      }
+    });
+  });
+  
+
+
+  
     // Initialize Chart.js for earnings visualization
     const earningsCtx = document.getElementById('earningsChart').getContext('2d');
     
@@ -405,7 +438,20 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Initialize when schedule section is shown
-  document.querySelector('.sidebar-nav a[data-section="schedule"]').addEventListener('click', initCalendar);
+  document.querySelectdocument.querySelector('.sidebar-nav a[data-section="schedule"]')
+  .addEventListener('click', () => {
+    // Show the correct section
+    document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+    document.getElementById('schedule').classList.add('active');
+
+    // Set sidebar active class
+    document.querySelectorAll('.sidebar-nav li').forEach(li => li.classList.remove('active'));
+    document.querySelector('.sidebar-nav li a[data-section="schedule"]').parentElement.classList.add('active');
+
+    // Reinitialize the calendar
+    initCalendar(); // <== this is important
+  });
+or('.sidebar-nav a[data-section="schedule"]').addEventListener('click', initCalendar);
   
 });
 document.addEventListener('DOMContentLoaded', () => {
