@@ -25,8 +25,6 @@ body {
   align-items: center;
 }
 
-
-
 .hero-form select {
   padding: 12px;
   border: 1px solid #ccc;
@@ -34,11 +32,8 @@ body {
   font-size: 16px;
   background-color: white;
   appearance: none;
-  /* Removes default arrow in some browsers */
   -webkit-appearance: none;
-  /* Removes default arrow in Safari */
   -moz-appearance: none;
-  /* Removes default arrow in Firefox */
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 12px center;
@@ -89,13 +84,11 @@ body {
   color: #555;
 }
 
-/* Style the options */
 .hero-form option {
   padding: 8px;
   font-size: 15px;
 }
 
-/* Style the price info */
 .price-info {
   font-size: 18px;
   font-weight: bold;
@@ -108,7 +101,6 @@ body {
   color: #ffffff;
 }
 
-/* Style the button (if needed) */
 .btn-primary {
   padding: 12px 20px;
   background-color: #007bff;
@@ -141,7 +133,6 @@ body {
 .steps,
 .about {
   padding: 4rem 2rem;
-  /* box-shadow: 07px 5px 2px rgba(0,0,0,0.1); */
 }
 
 .features h2,
@@ -152,7 +143,6 @@ body {
   margin-bottom: 2rem;
   border-style: groove;
   border-bottom: none;
-  
 }
 
 .alt-bg {
@@ -168,7 +158,6 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  /* box-shadow: 0 2px 6px rgba(0,0,0,0.1); */
 }
 
 .card,
@@ -193,7 +182,6 @@ body {
   border: none;
 }
 
-
 .cta {
   text-align: center;
   padding: 3rem 2rem;
@@ -217,7 +205,6 @@ body {
   padding: 1rem;
 }
 
-/* Modal Styles */
 .modal {
   display: none;
   position: fixed;
@@ -351,14 +338,11 @@ body {
   background-color: #00aa70;
 }
 
-/* Add these changes to your existing CSS */
-
 .container {
   max-width: 1000px;
   margin: auto;
   padding: 2rem;
   background-color: transparent;
-  /* Ensure container is transparent */
 }
 
 .hero-form {
@@ -368,16 +352,12 @@ body {
   max-width: 400px;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.1);
-  /* Semi-transparent white */
   backdrop-filter: blur(5px);
-  /* Optional: Adds blur effect behind the form */
   padding: 1.5rem;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  /* Light border for definition */
 }
 
-/* Update select styles to be transparent */
 .hero-form select {
   padding: 12px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -385,7 +365,6 @@ body {
   font-size: 16px;
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
-  /* White text for better contrast */
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -397,32 +376,25 @@ body {
   transition: all 0.3s;
 }
 
-/* Change option colors for better visibility */
 .hero-form option {
   background-color: #333;
-  /* Dark background for options */
   color: white;
 }
 
-/* Update button style */
 .btn-primary {
   background-color: rgba(0, 204, 136, 0.8);
-  /* Semi-transparent green */
   color: white;
   border: none;
 }
 
-/* Keep all white text consistent */
 .hero h1,
 .hero p,
 .signin,
 .price-info {
   color: white;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  /* Optional: improves readability */
 }
-/* Add these at the BOTTOM of your CSS file */
-/* ===== Country & Phone Styles ===== */
+
 .country-code {
   padding: 10px;
   border: 1px solid #ddd;
@@ -447,7 +419,6 @@ body {
   gap: 15px;
 }
 
-/* Add under existing .account-header styles */
 .account-header p {
   font-size: 14px;
   line-height: 1.5;

@@ -1,10 +1,16 @@
+<!-- make sure that the user insert numbers in the phonenumber-input
+ and also i can add captcha and @ sign must be in the user-email  -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Become a Provider | MisyonPazarı</title>
   <link rel="stylesheet" href="tasker-.css" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 <body>
   <header class="hero">
@@ -19,7 +25,7 @@
               <option>Nicosia (Lefkoşa)</option>
               <option>Kyrenia (Girne)</option>
               <option>Famagusta (Gazimağusa)</option>
-              <option>Morphou (Güzelyurt)</option>q
+              <option>Morphou (Güzelyurt)</option>
               <option>Iskele (Trikomo)</option>
             </optgroup>
           </select>
@@ -36,8 +42,8 @@
           </select>
           <div class="price-info">$40<span> / hour</span></div>
           <button type="button" onclick="openModal()" class="btn-primary">Get started</button>
+          <p class="signin">Already have an account? <a href="#">Sign in</a></p>
         </form>
-        <p class="signin">Already have an account? <a href="#">Sign in</a></p>
       </div>
     </div>
   </header>
@@ -65,7 +71,8 @@
   <section class="about dark-bg">
     <div class="container">
       <h2>What is MisyonPazarı?</h2>
-      <p>MisyonPazarı is a trusted platform that connects skilled professionals with local customers. Whether it's electrical repairs or appliance servicing — we help you get hired quickly and safely.</p>
+      <p>MisyonPazarı is a trusted platform that connects skilled professionals with local customers. Whether it's
+        electrical repairs or appliance servicing — we help you get hired quickly and safely.</p>
     </div>
   </section>
 
@@ -86,7 +93,7 @@
   <section class="cta dark-bg">
     <div class="container">
       <h2 id="get-started">Ready to work on your terms?</h2>
-      <button onclick="openModal()" class="btn-primary">Get started</button>
+      <button type="button" onclick="openModal()" class="btn-primary">Get started</button>
     </div>
   </section>
 
@@ -96,68 +103,78 @@
     </div>
   </footer>
 
-  <!-- Uncomment the modal and update it -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <div class="account-header">
-      <h3>Create your account</h3>
-      <p>Create an account to get started. Then we'll text you a link to download the Tasker app to complete your registration. Standard call, messaging, or data rates apply.</p>
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="account-header">
+        <h3>Create your account</h3>
+        <p>Create an account to get started...</p>
+      </div>
+
+      <form class="account-form">
+        <div class="form-group">
+          
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+
+        <div class="name-fields">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Mobile Phone</label>
+          <div class="phone-input">
+            <select class="country-code">
+              <option value="+90">🇹🇷 +90 (TR)</option>
+              <option value="+1">🇺🇸 +1 (US)</option>
+              <option value="+44">🇬🇧 +44 (UK)</option>
+              <option value="+49">🇩🇪 +49 (DE)</option>
+              <option value="+33">🇫🇷 +33 (FR)</option>
+              <option value="+39">🇮🇹 +39 (IT)</option>
+              <option value="+34">🇪🇸 +34 (ES)</option>
+            </select>
+            <input type="tel" id="phone" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Create a password</label>
+          <input type="password" id="password" required>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="sole-proprietor" required>
+          <label for="sole-proprietor">I acknowledge I am a sole proprietor.</label>
+          
+        </div>
+        
+        <!-- <div class="form-group">
+          <div class="g-recaptcha" 
+               data-sitekey="YOUR_SITE_KEY" 
+               data-callback="enableSubmit"
+               style="margin: 15px 0;"></div>
+          <div id="captcha-error" class="error-message"></div>
+        </div>
+        
+        <button type="submit" class="create-account-btn" disabled>Create account</button> -->
+
+        <p class="terms-text">
+          By clicking below and creating an account, I agree to
+          <a href="#">MisyonPazarı's Terms of Service</a> and <a href="#">Privacy Policy</a>
+        </p>
+
+        <button type="submit" class="create-account-btn">Create account</button>
+      </form>
     </div>
-    
-    <form class="account-form">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" required>
-      </div>
-      
-      <div class="name-fields">
-        <div class="form-group">
-          <label for="fname">First Name</label>
-          <input type="text" id="fname" required>
-        </div>
-        <div class="form-group">
-          <label for="lname">Last Name</label>
-          <input type="text" id="lname" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Mobile Phone</label>
-        <div class="phone-input">
-          <select class="country-code">
-            <option value="+90">🇹🇷 +90 (TR)</option>
-            <option value="+1">🇺🇸 +1 (US)</option>
-            <option value="+44">🇬🇧 +44 (UK)</option>
-            <option value="+49">🇩🇪 +49 (DE)</option>
-            <option value="+33">🇫🇷 +33 (FR)</option>
-            <option value="+39">🇮🇹 +39 (IT)</option>
-            <option value="+34">🇪🇸 +34 (ES)</option>
-            <!-- Add more countries as needed -->
-          </select>
-          <input type="tel" id="phone" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="password">Create a password</label>
-        <input type="password" id="password" required>
-      </div>
-      
-      <div class="checkbox-group">
-        <input type="checkbox" id="sole-proprietor" required>
-        <label for="sole-proprietor">I acknowledge I am a sole proprietor.</label>
-      </div>
-      
-      <p class="terms-text">
-        By clicking below and creating an account, I agree to
-        <a href="#">MisyonPazarı's Terms of Service</a> and <a href="#">Privacy Policy</a>
-      </p>
-      
-      <button type="submit" class="create-account-btn">Create account</button>
-    </form>
   </div>
-</div>
 
   <script src="tasker_.js"></script>
 </body>
