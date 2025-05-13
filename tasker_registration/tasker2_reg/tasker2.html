@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a Tasker | MisyonPazarı</title>
+  <link rel="stylesheet" href="tasker2-.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container header-flex">
+      <span class="logo">MisyonPazarı</span>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-flex">
+        <div class="hero-text">
+          <h1>Earn money your way</h1>
+          <p>Join MisyonPazarı and offer your services locally</p>
+          <form id="tasker-form">
+            <label>
+              Your Area
+              <select id="area" required>
+                <option value="">Select your area</option>
+                <optgroup label="Northern Cyprus Cities">
+                  <option>Nicosia (Lefkoşa)</option>
+                  <option>Kyrenia (Girne)</option>
+                  <option>Famagusta (Gazimağusa)</option>
+                  <option>Morphou (Güzelyurt)</option>
+                  <option>Iskele (Trikomo)</option>
+                </optgroup>
+              </select>
+            </label>
+            <label>
+              Category
+              <select id="category" required>
+                <option value="">Choose a Category</option>
+                <option>Plumbing</option>
+                <option>Electrical</option>
+                <option>Appliance Repair</option>
+                <option>Carpentry</option>
+                <option>Painting</option>
+                <option>Cleaning Services</option>
+                <option>Gardening</option>
+                <option>Handyman Services</option>
+              </select>
+            </label>
+            <div class="price-row">
+              <span id="price">₺40</span> <span class="per-hour">/hr</span>
+            </div>
+            <button type="button" onclick="openModal()" class="btn-primary">Get Started</button>
+            <p class="signin">Already have an account? <a href="#">Sign in</a></p>
+          </form>
+        </div>
+        <div class="hero-img">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Tasker at work">
+        </div>
+      </div>
+    </section>
+
+    <section class="features container">
+      <h2>Why Join MisyonPazarı?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Be your own boss</h3>
+          <p>Work when and where you want with full control over your schedule.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Keep 100% of your pay</h3>
+          <p>You set your rates and keep all your earnings and tips — no hidden fees.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Clients come to you</h3>
+          <p>Get discovered by clients in your area and grow your business fast.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps container">
+      <h2>Getting Started is Easy</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">1</span>
+          <p>Sign up</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">2</span>
+          <p>Build your profile</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">3</span>
+          <p>Verify your ID</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">4</span>
+          <p>Set availability</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">5</span>
+          <p>Start working</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial container">
+      <blockquote>
+        <p>"I love being a Tasker! I can work on my own terms and earn extra income."</p>
+        <footer>- Alex, Tasker</footer>
+      </blockquote>
+    </section>
+
+    <section class="faq container">
+      <h2>FAQ</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">Do I need experience?</button>
+          <div class="faq-answer">No experience is required! Just motivation and reliability.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How do I get paid?</button>
+          <div class="faq-answer">Payments are sent directly to your bank account after each task.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Can I choose my own hours?</button>
+          <div class="faq-answer">Yes! You set your own schedule and availability.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 MisyonPazarı. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="account-header">
+        <h3>Create your account</h3>
+        <p>Create an account to get started...</p>
+      </div>
+
+      <form class="account-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+
+        <div class="name-fields">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Mobile Phone</label>
+          <div class="phone-input">
+            <select class="country-code">
+              <option value="+249">🇸🇩 +249 (Sudan)</option>
+              <option value="+90">🇹🇷 +90 (Turkey)</option>
+              <option value="+1">🇺🇸 +1 (USA)</option>
+              <option value="+44">🇬🇧 +44 (UK)</option>
+              <option value="+49">🇩🇪 +49 (Germany)</option>
+              <option value="+33">🇫🇷 +33 (France)</option>
+              <option value="+39">🇮🇹 +39 (Italy)</option>
+              <option value="+34">🇪🇸 +34 (Spain)</option>
+              <option value="+966">🇸🇦 +966 (Saudi Arabia)</option>
+              <option value="+971">🇦🇪 +971 (UAE)</option>
+              <option value="+20">🇪🇬 +20 (Egypt)</option>
+              <option value="+212">🇲🇦 +212 (Morocco)</option>
+              <option value="+216">🇹🇳 +216 (Tunisia)</option>
+              <option value="+213">🇩🇿 +213 (Algeria)</option>
+              <option value="+962">🇯🇴 +962 (Jordan)</option>
+              <option value="+961">🇱🇧 +961 (Lebanon)</option>
+              <option value="+963">🇸🇾 +963 (Syria)</option>
+              <option value="+964">🇮🇶 +964 (Iraq)</option>
+              <option value="+98">🇮🇷 +98 (Iran)</option>
+              <option value="+93">🇦🇫 +93 (Afghanistan)</option>
+            </select>
+            <input type="tel" id="phone" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Create a password</label>
+          <input type="password" id="password" required>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="sole-proprietor" required>
+          <label for="sole-proprietor">I acknowledge I am a sole proprietor.</label>
+        </div>
+
+        <p class="terms-text">
+          By clicking below and creating an account, I agree to
+          <a href="#">MisyonPazarı's Terms of Service</a> and <a href="#">Privacy Policy</a>
+        </p>
+
+        <button type="submit" class="create-account-btn">Create account</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="taser2_.js"></script>
+</body>
+</html>
