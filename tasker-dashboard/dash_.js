@@ -1,14 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Current date tracking for calendar
+  let currentDate = new Date(2025, 4); // Start with May 2025 to match your initial state
+  let selectedDay = null;
+  let tasks = {}; // Store tasks by date
 
-  
+  // Initialize navigation buttons
+  const prevButton = document.getElementById('prev-period');
+  const nextButton = document.getElementById('next-period');
 
+  // Add event listeners for navigation buttons
+  if (prevButton) {
+    prevButton.addEventListener('click', function() {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      renderCalendar();
+      return false; // Prevent default action
+    });
+  }
 
+  if (nextButton) {
+    nextButton.addEventListener('click', function() {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      renderCalendar();
+      return false; // Prevent default action
+    });
+  }
 
   document.querySelectorAll('.sidebar-nav a').forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
   
       const sectionId = link.getAttribute('data-section');
+      const href = link.getAttribute('href');
   
       // Show the matching section
       document.querySelectorAll('.content-section').forEach((section) => {
@@ -22,9 +44,19 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       link.parentElement.classList.add('active');
   
+      // Handle scrolling if it's a scroll-link
+      if (link.classList.contains('scroll-link') && href) {
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 100);
+        }
+      }
+  
       // Re-initialize calendar if "Schedule" is clicked
       if (sectionId === 'schedule') {
-        initCalendar(); // This should be defined elsewhere in your JS
+        renderCalendar();
       }
     });
   });
@@ -33,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
     // Initialize Chart.js for earnings visualization
-    const earningsCtx = document.getElementById('earningsChart').getContext('2d');
+    const earningsCtx = document.getElementById('earnings-chart').getContext('2d');
     
     const earningsChart = new Chart(earningsCtx, {
       type: 'line',
@@ -76,10 +108,37 @@ document.addEventListener('DOMContentLoaded', function() {
     // Toggle mobile menu
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content');
     
     if (mobileMenuBtn && sidebar) {
-      mobileMenuBtn.addEventListener('click', function() {
-        sidebar.classList.toggle('active');
+      // Handle mobile menu button click
+      mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        sidebar.classList.add('active');
+        mobileMenuBtn.style.display = 'none';
+      });
+
+      // Close sidebar when clicking outside
+      document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768 && 
+            sidebar.classList.contains('active') && 
+            !sidebar.contains(e.target) && 
+            e.target !== mobileMenuBtn) {
+          sidebar.classList.remove('active');
+          mobileMenuBtn.style.display = 'block';
+        }
+      });
+
+      // Handle window resize
+      let resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          if (window.innerWidth > 768) {
+            sidebar.classList.remove('active');
+            mobileMenuBtn.style.display = window.innerWidth <= 768 ? 'block' : 'none';
+          }
+        }, 250);
       });
     }
   
@@ -264,26 +323,23 @@ document.addEventListener('DOMContentLoaded', function() {
   // Render calendar based on current view
   function renderCalendar() {
     const calendarEl = document.getElementById('calendar');
-    calendarEl.innerHTML = '';
-    
-    if (currentView === 'month') {
-      renderMonthView();
-    } else if (currentView === 'week') {
-      renderWeekView();
-    } else {
-      renderDayView();
-    }
-  }
-  
-  function renderMonthView() {
-    const calendarEl = document.getElementById('calendar');
+    if (!calendarEl) return;
+
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     
-    document.getElementById('current-period').textContent = 
-      `${new Date(year, month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}`;
+    // Update header with current period
+    const currentPeriodEl = document.getElementById('current-period');
+    if (currentPeriodEl) {
+      currentPeriodEl.textContent = new Date(year, month).toLocaleDateString('en-US', { 
+        month: 'long', 
+        year: 'numeric' 
+      });
+    }
     
-    // Day headers
+    calendarEl.innerHTML = '';
+    
+    // Add day headers
     ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach(day => {
       const dayHeader = document.createElement('div');
       dayHeader.className = 'calendar-day-header';
@@ -291,46 +347,58 @@ document.addEventListener('DOMContentLoaded', function() {
       calendarEl.appendChild(dayHeader);
     });
     
-    // Get first day of month and how many days to show from previous month
+    // Calculate calendar days
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const today = new Date();
     
-    // Previous month days
-    const prevMonthDays = new Date(year, month, 0).getDate();
+    // Add empty cells for previous month
     for (let i = 0; i < firstDay; i++) {
-      const dayEl = document.createElement('div');
-      dayEl.className = 'calendar-day empty';
-      calendarEl.appendChild(dayEl);
+      const emptyDay = document.createElement('div');
+      emptyDay.className = 'calendar-day empty';
+      calendarEl.appendChild(emptyDay);
     }
     
-    // Current month days
-    const today = new Date();
+    // Add days of current month
     for (let i = 1; i <= daysInMonth; i++) {
       const dayEl = document.createElement('div');
       dayEl.className = 'calendar-day';
       dayEl.textContent = i;
       
       const dayDate = new Date(year, month, i);
+      const dateString = dayDate.toISOString().split('T')[0];
+      
+      // Mark today
       if (dayDate.toDateString() === today.toDateString()) {
         dayEl.classList.add('today');
       }
       
-      // Check for jobs on this day
-      const dayJobs = jobs.filter(job => 
-        job.date.getDate() === i && 
-        job.date.getMonth() === month && 
-        job.date.getFullYear() === year
-      );
-      
-      if (dayJobs.length > 0) {
-        dayEl.classList.add('has-jobs');
-        dayEl.innerHTML = `${i}<div class="day-jobs">${dayJobs.length} job${dayJobs.length > 1 ? 's' : ''}</div>`;
+      // Mark selected day
+      if (selectedDay === dateString) {
+        dayEl.classList.add('selected');
       }
       
+      // Add tasks indicator if there are tasks
+      if (tasks[dateString] && tasks[dateString].length > 0) {
+        dayEl.classList.add('has-jobs');
+        dayEl.innerHTML = `${i}<div class="day-jobs">${tasks[dateString].length} task${tasks[dateString].length > 1 ? 's' : ''}</div>`;
+      }
+      
+      // Day click handler
       dayEl.addEventListener('click', () => {
-        document.querySelectorAll('.calendar-day.selected').forEach(el => el.classList.remove('selected'));
+        document.querySelectorAll('.calendar-day').forEach(el => el.classList.remove('selected'));
         dayEl.classList.add('selected');
-        showDayJobs(dayDate);
+        selectedDay = dateString;
+        
+        const selectedDayEl = document.getElementById('selected-day');
+        if (selectedDayEl) {
+          selectedDayEl.textContent = dayDate.toLocaleDateString('en-US', { 
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+          });
+        }
+        loadTasks();
       });
       
       calendarEl.appendChild(dayEl);

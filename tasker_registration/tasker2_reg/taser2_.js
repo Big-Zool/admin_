@@ -38,11 +38,21 @@ if (category && price) {
   });
 }
 
-// FAQ toggle
+// FAQ toggle with accordion
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', function() {
     const item = btn.parentElement;
-    item.classList.toggle('open');
+    const isOpen = item.classList.contains('open');
+    
+    // Close all FAQ items
+    document.querySelectorAll('.faq-item').forEach(faqItem => {
+      faqItem.classList.remove('open');
+    });
+    
+    // Open clicked item if it wasn't open before
+    if (!isOpen) {
+      item.classList.add('open');
+    }
   });
 });
 
@@ -90,7 +100,8 @@ document.querySelector('.btn-primary').addEventListener('click', function() {
 
 // Help button functionality
 function showHelp() {
-  alert('Need help? Contact us at support@misyonpazari.com or call +90 123 456 7890');
+  // Use the current directory path
+  window.location.href = './contact.html';
 }
 
 // Add help button to the page

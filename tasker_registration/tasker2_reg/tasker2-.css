@@ -70,11 +70,16 @@ nav a:hover {
   flex: 1 1 500px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-img img {
   width: 100%;
+  height: 100%;
   max-width: 600px;
+  object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -237,55 +242,88 @@ nav a:hover {
 .steps {
   padding: 4rem 0 2rem 0;
   text-align: center;
-  background: #f8faff;
+  background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
 }
 
 .steps h2 {
   font-size: 2rem;
   color: var(--primary);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.steps h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px;
 }
 
 .steps-grid {
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
   gap: 2rem;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 2rem;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.steps-grid:before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 50px;
+  right: 50px;
+  height: 2px;
+  background: var(--primary);
+  opacity: 0.3;
+  z-index: 1;
 }
 
 .step-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 2rem 1.5rem;
-  flex: 1 1 200px;
+  flex: 1;
   min-width: 180px;
   max-width: 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .step-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 123, 255, 0.15);
 }
 
 .step-num {
+  width: 40px;
+  height: 40px;
   background: var(--primary);
-  color: #fff;
+  color: white;
   border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.2rem;
   font-weight: bold;
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
+  position: relative;
+}
+
+.step-card p {
+  color: #444;
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 500;
 }
 
 .testimonial {
@@ -337,38 +375,63 @@ nav a:hover {
 }
 
 .faq-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
   margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.1);
 }
 
 .faq-question {
-  background: #f8faff;
-  border: 1px solid var(--primary);
-  color: var(--primary);
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
   width: 100%;
   text-align: left;
+  padding: 1rem;
+  background: none;
+  border: none;
   font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
   cursor: pointer;
-  transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.faq-question:after {
+  content: '\f107';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: var(--primary);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-question:after {
+  transform: rotate(180deg);
 }
 
 .faq-question:hover {
-  background: #e6f0ff;
+  color: var(--primary);
 }
 
 .faq-answer {
-  display: none;
-  padding: 1rem 1.5rem;
-  background: #fff;
-  border-left: 3px solid var(--primary);
-  color: #333;
-  border-radius: 0 0 8px 8px;
-  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 1rem;
+  opacity: 0;
 }
 
 .faq-item.open .faq-answer {
-  display: block;
+  max-height: 200px;
+  padding: 1rem;
+  opacity: 1;
 }
 
 footer {
@@ -532,17 +595,21 @@ footer {
 @media (max-width: 900px) {
   .hero-flex {
     flex-direction: column;
-    text-align: center;
+    gap: 2rem;
   }
-  
+
   .hero-img {
-    order: -1;
+    flex: 1 1 300px;
+    max-height: 400px;
+    width: 100%;
   }
-  
+
   .hero-img img {
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-  
+
   #tasker-form {
     margin: 0 auto;
   }
@@ -599,5 +666,14 @@ footer {
     right: 1rem;
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
+  }
+  
+  .steps-grid:before {
+    display: none;
+  }
+  
+  .step-card {
+    min-width: 150px;
+    padding: 1.5rem 1rem;
   }
 }

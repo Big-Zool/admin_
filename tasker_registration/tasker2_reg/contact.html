@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Tasker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            color: #007bff;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-intro {
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 0 auto;
+            max-width: 900px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp i {
+            color: #25D366;
+        }
+
+        .email i {
+            color: #EA4335;
+        }
+
+        .phone i {
+            color: #4CAF50;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+            color: #007bff;
+        }
+
+        .contact-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            background: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .contact-methods {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                margin: 2rem auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="tasker2.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </nav>
+
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <p class="contact-intro">Get in touch with us through any of these channels:</p>
+
+        <div class="contact-methods">
+            <div class="contact-card whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <h3>WhatsApp</h3>
+                <p>+1234567890</p>
+            </div>
+
+            <div class="contact-card email">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>support.Abdalla@tasker.com</p>
+            </div>
+
+            <div class="contact-card phone">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <p>+1234567890</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Tasker. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
