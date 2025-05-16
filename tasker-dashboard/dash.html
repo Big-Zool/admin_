@@ -3,8 +3,15 @@
 <!-- now fix the sidebar -->
 <!-- make the sidebar stationary  -->
 <!-- fix the burger problem *_* --> 
+ <!-- __________________________________________ -->
 
-<!-- delete nottifications button -->
+
+<!-- button for delete nottifications -->
+<!-- fix the profile dropdown issue  -->
+<!-- the calnder problem  -->
+<!-- dontttttttt ! forget -->
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,14 +98,43 @@
           <input type="text" placeholder="Search...">
         </div>
         <div class="header-actions">
-          <div class="notification">
-            <i class="fas fa-bell"></i>
-            <span class="badge">3</span>
-          </div>
           <div class="profile">
-            <img src="blank-profile-picture-973460_1280.webp" alt="Profile Picture">
-            <span>John Doe</span>
+            <div class="profile-image-wrapper">
+              <img src="blank-profile-picture-973460_1280.webp" alt="Profile Picture">
+              <span class="notification-badge">3</span>
+            </div>
+            <span>Abdalla Ali</span>
             <i class="fas fa-chevron-down"></i>
+            <div class="profile-dropdown">
+              <ul>
+                <li>
+                  <a href="#profile">
+                    <span class="icon-wrapper"><i class="fas fa-user"></i></span>
+                    <span class="menu-text">My Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#settings">
+                    <span class="icon-wrapper"><i class="fas fa-cog"></i></span>
+                    <span class="menu-text">Settings</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#notifications" class="notifications-link">
+                    <span class="icon-wrapper"><i class="fas fa-bell"></i></span>
+                    <span class="menu-text">Notifications</span>
+                    <span class="notification-count">3</span>
+                  </a>
+                </li>
+                <div class="divider"></div>
+                <li>
+                  <a href="#logout" class="logout">
+                    <span class="icon-wrapper"><i class="fas fa-sign-out-alt"></i></span>
+                    <span class="menu-text">Logout</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </header>

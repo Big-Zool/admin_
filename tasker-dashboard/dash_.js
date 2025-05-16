@@ -142,8 +142,37 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   
-    // Notification dropdown
-    const notification = document.querySelector('.notification');
+    // Notification System
+    const notificationsLink = document.querySelector('.notifications-link');
+    const notificationBadge = document.querySelector('.notification-badge');
+    const notificationCount = document.querySelector('.notification-count');
+
+    // Sample notifications data
+    const notifications = [
+      {
+        type: 'message',
+        icon: 'fa-envelope',
+        message: 'New message from Chris Daël',
+        time: '2 hours ago',
+        unread: true
+      },
+      {
+        type: 'rating',
+        icon: 'fa-star',
+        message: 'You received a 5-star rating from Amadou Ty',
+        time: '1 day ago',
+        unread: true
+      },
+      {
+        type: 'job',
+        icon: 'fa-calendar-check',
+        message: 'New job booked for tomorrow at 10:00 AM',
+        time: '3 hours ago',
+        unread: true
+      }
+    ];
+
+    // Create notification dropdown
     const notificationDropdown = document.createElement('div');
     notificationDropdown.className = 'notification-dropdown';
     notificationDropdown.innerHTML = `
@@ -152,99 +181,101 @@ document.addEventListener('DOMContentLoaded', function() {
         <span class="mark-all-read">Mark all as read</span>
       </div>
       <div class="notification-list">
-        <div class="notification-item unread">
-          <div class="notification-icon">
-            <i class="fas fa-calendar-check"></i>
+        ${notifications.map(notification => `
+          <div class="notification-item ${notification.unread ? 'unread' : ''}">
+            <div class="notification-icon">
+              <i class="fas ${notification.icon}"></i>
+            </div>
+            <div class="notification-content">
+              <p>${notification.message}</p>
+              <span class="notification-time">${notification.time}</span>
+            </div>
           </div>
-          <div class="notification-content">
-            <p>New job booked for tomorrow at 10:00 AM</p>
-            <span class="notification-time">2 hours ago</span>
-          </div>
-        </div>
-        <div class="notification-item unread">
-          <div class="notification-icon">
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="notification-content">
-            <p>You received a 5-star rating from Ahmet Yılmaz</p>
-            <span class="notification-time">1 day ago</span>
-          </div>
-        </div>
-        <div class="notification-item">
-          <div class="notification-icon">
-            <i class="fas fa-wallet"></i>
-          </div>
-          <div class="notification-content">
-            <p>Payment of ₺450 has been processed</p>
-            <span class="notification-time">3 days ago</span>
-          </div>
-        </div>
+        `).join('')}
       </div>
       <div class="notification-footer">
         <a href="#">View all notifications</a>
       </div>
     `;
-    
-    if (notification) {
-      notification.addEventListener('click', function(e) {
+
+    // Add notification dropdown to the page
+    document.querySelector('.profile').appendChild(notificationDropdown);
+
+    // Handle notification click
+    if (notificationsLink) {
+      notificationsLink.addEventListener('click', (e) => {
+        e.preventDefault();
         e.stopPropagation();
-        const existingDropdown = document.querySelector('.notification-dropdown');
-        
-        if (existingDropdown) {
-          existingDropdown.remove();
-        } else {
-          notification.appendChild(notificationDropdown);
-          
-          // Mark as read when clicking on notifications
-          const markAllRead = notificationDropdown.querySelector('.mark-all-read');
-          const unreadItems = notificationDropdown.querySelectorAll('.unread');
-          
-          markAllRead.addEventListener('click', function() {
-            unreadItems.forEach(item => {
-              item.classList.remove('unread');
-            });
-            notification.querySelector('.badge').style.display = 'none';
-          });
-        }
-      });
-      
-      // Close dropdown when clicking elsewhere
-      document.addEventListener('click', function() {
-        const existingDropdown = document.querySelector('.notification-dropdown');
-        if (existingDropdown) {
-          existingDropdown.remove();
-        }
+        notificationDropdown.classList.toggle('active');
       });
     }
-  
-    // Profile dropdown
-    const profile = document.querySelector('.profile');
-    const profileDropdown = document.createElement('div');
-    profileDropdown.className = 'profile-dropdown';
-    profileDropdown.innerHTML = `
-      <a href="#"><i class="fas fa-user"></i> Profile</a>
-      <a href="#"><i class="fas fa-cog"></i> Settings</a>
-      <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
-    `;
-    
-    if (profile) {
-      profile.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const existingDropdown = document.querySelector('.profile-dropdown');
+
+    // Mark all as read functionality
+    const markAllRead = notificationDropdown.querySelector('.mark-all-read');
+    if (markAllRead) {
+      markAllRead.addEventListener('click', () => {
+        const unreadItems = notificationDropdown.querySelectorAll('.unread');
+        unreadItems.forEach(item => {
+          item.classList.remove('unread');
+        });
         
-        if (existingDropdown) {
-          existingDropdown.remove();
+        // Update notification counts
+        if (notificationBadge) notificationBadge.style.display = 'none';
+        if (notificationCount) notificationCount.style.display = 'none';
+      });
+    }
+
+    // Close notification dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!notificationDropdown.contains(e.target) && !notificationsLink.contains(e.target)) {
+        notificationDropdown.classList.remove('active');
+      }
+    });
+  
+    // Profile Dropdown Functionality
+    const profile = document.querySelector('.profile');
+    const dropdown = document.querySelector('.profile-dropdown');
+
+    if (profile && dropdown) {
+      // Toggle dropdown on profile click
+      profile.addEventListener('click', (e) => {
+        e.stopPropagation();
+        profile.classList.toggle('active');
+        
+        // Ensure dropdown is visible when active
+        if (profile.classList.contains('active')) {
+          dropdown.style.display = 'block';
+          setTimeout(() => {
+            dropdown.style.opacity = '1';
+            dropdown.style.visibility = 'visible';
+            dropdown.style.transform = 'translateY(0)';
+          }, 10);
         } else {
-          profile.appendChild(profileDropdown);
+          dropdown.style.opacity = '0';
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            dropdown.style.display = 'none';
+          }, 300);
         }
       });
-      
-      // Close dropdown when clicking elsewhere
-      document.addEventListener('click', function() {
-        const existingDropdown = document.querySelector('.profile-dropdown');
-        if (existingDropdown) {
-          existingDropdown.remove();
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!profile.contains(e.target)) {
+          profile.classList.remove('active');
+          dropdown.style.opacity = '0';
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            dropdown.style.display = 'none';
+          }, 300);
         }
+      });
+
+      // Prevent dropdown from closing when clicking inside it
+      dropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
       });
     }
   
