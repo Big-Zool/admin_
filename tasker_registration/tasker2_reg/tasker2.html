@@ -3,16 +3,30 @@
 <!-- in help i should add new page for whatsapp number to contect and  email and so... -->
 <!-- i need to change the design of the steps in the tasker page i should make it better and more attractive -->
 <!-- i need to add an arrow in the faq at the bottom  -->
- <!--
-        <a href="#">FAQ</a> 
-        
-        in faq first make it point to the bottom in the place of the three questions , i want to add also like 'want more help and put like an arrow  ==> pointing to help button '-->
+<!--
+      <a href="#">FAQ</a> 
+      
+      in faq first make it point to the bottom in the place of the three questions , i want to add also like 'want more help and put like an arrow  ==> pointing to help button '-->
 
-        <!-- forget about that idea  -->
+<!-- forget about that idea  -->
 <!-- i should also add the limit for the name and password also  -->
 
 
-        
+<!-- minimum number for passowrd  -->
+
+      <!-- 
+
+      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░█▀▀▀░█▀▀▀░░█▀▀░▀▀█░░█░░░░ ░░░█░▀█░█░▀█░░█▀▀░▄▀░░░▀░░░░ ░░░▀▀▀▀░▀▀▀▀░░▀▀▀░▀▀▀░░▀░░░░ 
+      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░█░░░░█░░░░░█▀▀░▀▀█░░█░░░░ ░░░█░░░░█░░░░░█▀▀░▄▀░░░▀░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 
+      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░█░░░░█░░░░░█▀▀░▀▀█░░█░░░░ ░░░█░░░░█░░░░░█▀▀░▄▀░░░▀░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 
+      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░▀▀▀▀░▀▀▀▀░░▀▀▀░▀▀▀░░▀░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 
+      -->
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +35,33 @@
   <title>Become a Tasker | MisyonPazarı</title>
   <link rel="stylesheet" href="tasker2-.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .password-input {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    .password-input input {
+      width: 100%;
+      padding-right: 40px;
+    }
+    
+    .show-password {
+      position: absolute;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      color: #666;
+      transition: color 0.3s ease;
+    }
+    
+    .show-password:hover {
+      color: #333;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -169,17 +210,17 @@
       <form class="account-form">
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" required>
+          <input type="email" id="email" maxlength="100" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address (e.g., name@domain.com)" required>
         </div>
 
         <div class="name-fields">
           <div class="form-group">
             <label for="fname">First Name</label>
-            <input type="text" id="fname" required>
+            <input type="text" id="fname" maxlength="50" pattern="[A-Za-z\s]+" title="Please enter only letters and spaces" required>
           </div>
           <div class="form-group">
             <label for="lname">Last Name</label>
-            <input type="text" id="lname" required>
+            <input type="text" id="lname" maxlength="50" pattern="[A-Za-z\s]+" title="Please enter only letters and spaces" required>
           </div>
         </div>
 
@@ -196,7 +237,6 @@
               <option value="+39">🇮🇹 +39 (Italy)</option>
               <option value="+34">🇪🇸 +34 (Spain)</option>
               <option value="+966">🇸🇦 +966 (Saudi Arabia)</option>
-              <option value="+971">🇦🇪 +971 (UAE)</option>
               <option value="+20">🇪🇬 +20 (Egypt)</option>
               <option value="+212">🇲🇦 +212 (Morocco)</option>
               <option value="+216">🇹🇳 +216 (Tunisia)</option>
@@ -208,13 +248,18 @@
               <option value="+98">🇮🇷 +98 (Iran)</option>
               <option value="+93">🇦🇫 +93 (Afghanistan)</option>
             </select>
-            <input type="tel" id="phone" required>
+            <input type="tel" id="phone" pattern="[0-9]{10,12}" maxlength="12" title="Please enter a valid phone number (10-12 digits)" required>
           </div>
         </div>
 
         <div class="form-group">
           <label for="password">Create a password</label>
-          <input type="password" id="password" required>
+          <div class="password-input">
+            <input type="password" id="password" minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" title="Password must be at least 8 characters long and include both letters and numbers" required>
+            <button type="button" class="show-password" onclick="togglePassword()">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
         </div>
 
         <div class="checkbox-group">
@@ -233,5 +278,21 @@
   </div>
 
   <script src="taser2_.js"></script>
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const showPasswordBtn = document.querySelector('.show-password i');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        showPasswordBtn.classList.remove('fa-eye');
+        showPasswordBtn.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        showPasswordBtn.classList.remove('fa-eye-slash');
+        showPasswordBtn.classList.add('fa-eye');
+      }
+    }
+  </script>
 </body>
 </html>
